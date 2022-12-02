@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="utf-8">
+<title>test CH</title>
+
+    <head>
+    <link href="https://observatoire2022.visualcapitalmarkets.com/charts_folder/maps/observatoire2022/mapsvg.css" rel="stylesheet">
+    <link href="https://observatoire2022.visualcapitalmarkets.com/charts_folder/maps/observatoire2022/suisse/customCH.css" rel="stylesheet">
+    <link href="https://mapsvg.com/mapsvg/css/nanoscroller.css" rel="stylesheet">
+    <script src="https://mapsvg.com/mapsvg/js/jquery.js"></script>
+    <script src="https://mapsvg.com/mapsvg/js/jquery.mousewheel.min.js"></script>
+    <script src="https://mapsvg.com/mapsvg/js/jquery.nanoscroller.min.js"></script>
+    <script src="https://mapsvg.com/mapsvg/js/mapsvg.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    </head>
+
+    <body style="background-color:#2e2e2e;">
+
+    <div id="mapsvg" style="margin-top:100px; margin-left:50%; margin-right: 50%;"></div>
+
+    <script type="text/javascript">
+    jQuery(document).ready(function(){
+    jQuery("#mapsvg").mapSvg({disableAll: false,width: 921,height:563, colors: {baseDefault: "#fff",background: "transparent",stroke: "#ffffff", selected: 0,hover: 0,directory: "",status: {},base: "#fff"},regions: {
+
+    'CH-AG': {id: "CH-AG",'id_no_spaces': "CH-AG", title:"Aargau"                           ,data: {},gaugeValue:10     },
+    'CH-AI': {id: "CH-AI",'id_no_spaces': "CH-AI", title:"Appenzell Inner-Rhoden"           ,data: {},gaugeValue:20     },
+    'CH-AR': {id: "CH-AR",'id_no_spaces': "CH-AR", title:"Appenzell Ausser-Rhoden"          ,data: {},gaugeValue:30     },
+    'CH-BL': {id: "CH-BL",'id_no_spaces': "CH-BL", title:"Basel-Landschaft"                 ,data: {},gaugeValue:40     },
+    'CH-BE': {id: "CH-BE",'id_no_spaces': "CH-BE", title:"Bern"                             ,data: {},gaugeValue:50     },
+    'CH-BS': {id: "CH-BS",'id_no_spaces': "CH-BS", title:"Basel-Stadt"                      ,data: {},gaugeValue:10     },
+    'CH-FR': {id: "CH-FR",'id_no_spaces': "CH-FR", title:"Fribourg"                         ,data: {},gaugeValue:20     },
+    'CH-GE': {id: "CH-GE",'id_no_spaces': "CH-GE", title:"Genève"                           ,data: {},gaugeValue:30     },
+    'CH-GL': {id: "CH-GL",'id_no_spaces': "CH-GL", title:"Glarus"                           ,data: {},gaugeValue:40     },
+    'CH-GR': {id: "CH-GR",'id_no_spaces': "CH-GR", title:"Graubünden"                       ,data: {},gaugeValue:50     },
+    'CH-JU': {id: "CH-JU",'id_no_spaces': "CH-JU", title:"Jura"                             ,data: {},gaugeValue:10     },
+    'CH-LU': {id: "CH-LU",'id_no_spaces': "CH-LU", title:"Lucerne"                          ,data: {},gaugeValue:20     },
+    'CH-NE': {id: "CH-NE",'id_no_spaces': "CH-NE", title:"Neuchâtel"                        ,data: {},gaugeValue:30     },
+    'CH-NW': {id: "CH-NW",'id_no_spaces': "CH-NW", title:"Nidwalden"                        ,data: {},gaugeValue:40     },
+    'CH-OW': {id: "CH-OW",'id_no_spaces': "CH-OW", title:"Obwalden"                         ,data: {},gaugeValue:50     },
+    'CH-SG': {id: "CH-SG",'id_no_spaces': "CH-SG", title:"Sankt Gallen"                     ,data: {},gaugeValue:10     },
+    'CH-SH': {id: "CH-SH",'id_no_spaces': "CH-SH", title:"Schaffhausen"                     ,data: {},gaugeValue:20     },
+    'CH-SO': {id: "CH-SO",'id_no_spaces': "CH-SO", title:"Solothurn"                        ,data: {},gaugeValue:30     },
+    'CH-SZ': {id: "CH-SZ",'id_no_spaces': "CH-SZ", title:"Schwyz"                           ,data: {},gaugeValue:40     },
+    'CH-TG': {id: "CH-TG",'id_no_spaces': "CH-TG", title:"Thurgau"                          ,data: {},gaugeValue:50     },
+    'CH-TI': {id: "CH-TI",'id_no_spaces': "CH-TI", title:"Ticino"                           ,data: {},gaugeValue:10     },
+    'CH-UR': {id: "CH-UR",'id_no_spaces': "CH-UR", title:"Uri"                              ,data: {},gaugeValue:20     },
+    'CH-VD': {id: "CH-VD",'id_no_spaces': "CH-VD", title:"Vaud"                             ,data: {},gaugeValue:30     },
+    'CH-VS': {id: "CH-VS",'id_no_spaces': "CH-VS", title:"Valais"                           ,data: {},gaugeValue:40     },
+    'CH-ZG': {id: "CH-ZG",'id_no_spaces': "CH-ZG", title:"Zug"                              ,data: {},gaugeValue:50     },
+    'CH-ZH': {id: "CH-ZH",'id_no_spaces': "CH-ZH", title:"Zürich"                           ,data: {},gaugeValue:10     },
+
+
+    },
+
+    viewBox: [0,0,1224.3984,783.07391],cursor: "pointer",
+
+    afterLoad: function(
+    ) {
+        var mapsvg = this;
+        mapsvg.getData().$map.find('.mapsvg-gauge').hide();
+        var rangeCurrent = [10,20,30,40,50,60];
+        var colors = [[251,237,165],[237,192,130],[223,148,96],[210,103,61],[196,58,26]];
+        var legend = jQuery('<div id="mapsvg-legend"></div>');
+        legend.css({
+        'font-family': 'Montserrat, sans serif',    
+        'position': 'absolute',
+        'text-align':'left',
+        'font-size': '14px',
+        'color': '#fff',
+        'padding' : '12px 15px',
+        'bottom': '-130px',
+        'right': '-100px',
+        'background': 'rgba(255,255,255,0.0)'
+        });
+        for (var i =0; i < rangeCurrent.length-1; i++){
+        legend.append('<div style="padding: 3px 0;"><span style="display: block;float:left; width: 40px; height: 20px; background: rgb('+colors[i].join(',')+')"></span>&nbsp; <span style="line-height:20px">'+rangeCurrent[i]+' - '+rangeCurrent[i+1]+'</span> %</div>');
+        }
+        mapsvg.getData().$wrap.append(legend);
+    
+        jQuery('#mapsvg-select').on("change", function () {
+            var {gaugeValue} = jQuery(this).val();
+            mapsvg.update({regionChoroplethField: field});
+        });
+
+        MapSVG.Region.prototype.getChoroplethColor = function () {
+            var i = 0;
+            var a = false;
+            var regionChoroValue = parseFloat(this.data[this.globalOptions.regionChoroplethField]);
+            var color = [];
+            while (i < rangeCurrent.length) {
+                if (rangeCurrent[i] <= regionChoroValue && regionChoroValue <= rangeCurrent[i + 1]) {
+                    color = colors[i];
+                    break;
+                }
+                i++;
+            }
+            return {
+                r: color[0],
+                g: color[1],
+                b: color[2],
+                a: 1
+            };
+        };
+        mapsvg.regionsRedrawColors();
+
+    },
+
+    zoom: {on: true,limit: [0,10],delta: 2,buttons: {on: true,location: "left"},mousewheel: false},
+    tooltips: {mode: function(jQueryTooltipObj, mapObject, mapsvgInstance) {
+        if(this.mapsvg_type == "region")
+            return this.title + " : " + this.gaugeValue +"%";
+        else if (this.mapsvg_type == "marker")
+            return 'Marker - <b>'+ this.id+'</b>';
+    },on: false,priority: "local",position: "bottom-right"},
+    scroll: {on: true,limit: true,background: false,spacebar: false}, 
+    gauge: {on: true,labels: {low: "low",high: "high"},
+    colors: {lowRGB: {r: 254,g: 247,b: 239,a: 1},highRGB: {r: 85,g: 3,b: 14,a: 1},low: "#fbeda5",high: "#bd2409",diffRGB: {r: -127,g: -193,b: -196,a: 0}},min: 10,max: 50,maxAdjusted: 50},
+    source: "https://observatoire2022.visualcapitalmarkets.com/charts_folder/maps/observatoire2022/suisse/switzerland.svg",
+    title: "France_Départements", responsive: false});
+    });
+
+    </script>
+
+    </body>
+
+</html>
